@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSpace - CyberSecurity Platform</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>SecureSpace</h1>
+            <nav>
+                <ul class="">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#geolocation">Geolocation</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to <span>SecureSpace</span></h1>
+      <p>Your digital fortress for privacy, protection, and peace of mind.</p>
+      <a href="#features" class="cta-button">Get Started</a>
+    </div>
+  </section>
+<!--Main-->
+    <main>
+        <section id="about">
+            <div class="flex-container">
+        <article>
+          <h3>Our Mission</h3>
+          <p>SecureSpace is a student-focused cybersecurity vulnerability reporting platform. Our goal is to train ethical hackers and create a responsible community of bug reporters.</p>
+        </article>
+        <article>
+          <h3 id="features">Key Features</h3>
+          <ul>
+            <li>Report Security Vulnerabilities</li>
+            <li>Track Status Updates</li>
+            <li>Participate in Challenges</li>
+          </ul>
+        </article>
+      </div>
+        </section>
+
+<!--Geolocation-->
+        <section id="geolocation">
+      <h2>Your Location</h2>
+      <button onclick="getLocation()">Get My Location</button>
+      <p id="locationResult"></p>
+    </section>
+
+<!-- Feedback Section with LocalStorage -->
+    <section id="feedback">
+      <h2>Feedback Form</h2>
+      <form onsubmit="saveFeedback(event)">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <textarea id="comment" placeholder="Your Comment" required></textarea>
+        <br>
+        <button type="submit">Submit Feedback</button>
+      </form>
+      <div>
+        <h3>Submitted Feedback</h3>
+        <ul id="feedbackList"></ul>
+    </main>
+
+     <footer>
+    <p>Created by Kartik Dewnani | June 2025 &copy; SecureSpace</p>
+  </footer>
+
+</body>
+</html>

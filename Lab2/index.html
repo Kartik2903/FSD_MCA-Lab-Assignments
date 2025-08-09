@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 2</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script
+    src="https://kit.fontawesome.com/b8d907251c.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navigation Bar -->
+  <header class="absolute top-0 left-0 w-full z-20">
+    <div class="bg-white/10 backdrop-blur-md shadow-md">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="text-white font-bold text-2xl">SecureSpace</div>
+          <button
+            id="menu-btn"
+            class="text-white text-2xl md:hidden focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <ul
+            id="menu"
+            class="hidden md:flex space-x-6 text-white font-semibold"
+          >
+            <li>
+              <a href="#home" class="hover:text-blue-400">
+                <i class="fa-solid fa-house"></i> Home
+              </a>
+            </li>
+            <li>
+              <a href="#places" class="hover:text-blue-400">
+                <i class="fas fa-map-marker-alt"></i> Places
+              </a>
+            </li>
+            <li>
+              <a href="#gallery" class="hover:text-blue-400">
+                <i class="fa-solid fa-images"></i> Gallery
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-blue-400">
+                <i class="fa-solid fa-address-book"></i> Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Hamburger -->
+      <div id="mobile-menu" class="hidden md:hidden bg-black/60">
+        <ul class="flex flex-col items-center space-y-4 py-4 text-white">
+          <li>
+            <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li>
+            <a href="#places"><i class="fas fa-map-marker-alt"></i> Places</a>
+          </li>
+          <li>
+            <a href="#gallery"><i class="fa-solid fa-images"></i> Gallery</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa-solid fa-address-book"></i> Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative h-screen bg-cover bg-center text-[#c6c6c6]
+         before:absolute before:inset-0 before:bg-black/50 before:z-0
+         bg-[url('security-mobile.jpg')] sm:bg-[url('security-tablet.jpg')] lg:bg-[url('security.jpg')]">
+  <div
+    class="relative flex flex-col items-center justify-center h-full text-center px-4"
+  >
+    <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
+      Welcome to SecureSpace
+    </h1>
+    <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-6">
+      Your digital fortress for privacy and peace of mind.
+    </p>
+    <a
+      href="#features"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold"
+    >
+      Explore Now
+    </a>
+  </div>
+</section>
+  <!-- Video -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-6">Discover Our Journey</h2>
+    <video controls class="w-full rounded-lg shadow-lg">
+      <source src="promo.mp4" type="video/mp4" />
+      <track
+        src="subtitles.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English"
+        default
+      />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Audio -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-6">Relax with Music</h2>
+    <audio controls class="w-full">
+      <source src="background.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+
+  <!-- Fetch API Section -->
+  <section id="places" class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-6">Popular Destinations</h2>
+    <div
+      id="places-container"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <!-- Cards -->
+    </div>
+  </section>
+
+  <!-- Footer with SVG -->
+  <footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+      <p class="mb-4 md:mb-0">&copy; 2025 SecureSpace</p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-8 h-8 text-blue-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+      <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"
+      />
+      <circle cx="12" cy="9" r="2.5" fill="currentColor"/>
+    </svg>
+    <p class="flex flex-row">Location: Bengaluru &nbsp; Email: securespace@gmail.com  &nbsp;  contact: 0000-000-000
+    </p>
+</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fetch API data (dummy JSON)
+    fetch('https://jsonplaceholder.typicode.com/photos?_limit=6')
+      .then((response) => response.json())
+      .then((data) => {
+        const container = document.getElementById('places-container');
+        data.forEach((item) => {
+          const card = document.createElement('div');
+          card.className =
+            'bg-white rounded-lg shadow-md overflow-hidden flex flex-col';
+          card.innerHTML = `
+            <img src="${item.thumbnailUrl}" alt="${item.title}" class="w-full h-40 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-2">${item.title}</h3>
+              <p class="text-gray-600">Destination description here.</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>

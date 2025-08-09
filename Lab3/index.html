@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+       .selected-label {
+      background-color: #dbeafe; 
+      border-color: #3b82f6;     
+      box-shadow: 0 0 0 2px #60a5fa; 
+    }
+    
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+  <main class="bg-white shadow-lg rounded-xl p-6 w-full max-w-xl">
+    <h1 class="text-2xl font-bold mb-4 text-gray-700">Enrollment Form</h1>
+
+    <form id="infoForm" class="space-y-4">
+      <div>
+        <label for="name" class="block font-semibold text-gray-700">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label for="email" class="block font-semibold text-gray-700">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email" required class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <div>
+        <label for="course" class="block font-semibold text-gray-700">Course</label>
+        <input type="text" id="course" name="course" placeholder="Enter Your Course" required class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+
+      <fieldset>
+        <legend class="font-semibold text-gray-700 mb-2">Preferred Time</legend>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 border p-2 rounded-md cursor-pointer hover:bg-blue-50">
+            <input type="radio" name="preferredTime" value="Morning" class="peer hidden" required />
+            <span class="radio-label">Morning</span>
+          </label>
+          <label class="flex items-center gap-2 border p-2 rounded-md cursor-pointer hover:bg-blue-50">
+            <input type="radio" name="preferredTime" value="Afternoon" class="peer hidden" />
+            <span class="radio-label">Afternoon</span>
+          </label>
+          <label class="flex items-center gap-2 border p-2 rounded-md cursor-pointer hover:bg-blue-50">
+            <input type="radio" name="preferredTime" value="Evening" class="peer hidden" />
+            <span class="radio-label">Evening</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Submit</button>
+    </form>
+
+    <!-- Display Box -->
+    <div id="output" class="mt-6 hidden p-4 border-l-4 border-blue-600 bg-blue-50 rounded-md text-blue-900"></div>
+  </main>
+
+  <script>
+    const form = document.querySelector("#infoForm");
+    const output = document.querySelector("#output");
+
+    const labels = document.querySelectorAll("label");
+
+    labels.forEach(label => {
+      label.addEventListener("click", () => {
+        // Remove highlight from all
+        labels.forEach(l => l.classList.remove("selected-label"));
+        // Highlight only selected radio
+        const input = label.querySelector("input[type='radio']");
+        if (input && input.checked) {
+          label.classList.add("selected-label");
+        }
+      });
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.querySelector("#name").value;
+      const email = document.querySelector("#email").value;
+      const course = document.querySelector("#course").value;
+      const preferred = document.querySelector("input[name='preferredTime']:checked")?.value || "None";
+
+      output.classList.remove("hidden");
+      output.innerHTML = `
+        <h2 class="font-semibold text-lg mb-2">Submitted Information:</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Course:</strong> ${course}</p>
+        <p><strong>Preferred Time:</strong> ${preferred}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
