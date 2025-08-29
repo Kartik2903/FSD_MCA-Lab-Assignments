@@ -1,0 +1,28 @@
+{
+  "name": "securespace",
+  "version": "1.0.0",
+  "description": "SecureSpace - Users CRUD with file upload and email confirmation (Node/Express/MySQL + Vanilla JS frontend)",
+  "type": "module",
+  "scripts": {
+    "dev:api": "nodemon server.js",
+    
+    "dev": "concurrently -k -n api,tw -c blue,magenta \"npm:dev:api\" \"npm:tw:watch\"",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.10.2",
+    "nodemailer": "^6.9.14"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.0",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10"
+  }
+}
