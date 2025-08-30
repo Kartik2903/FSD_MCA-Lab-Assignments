@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <h1 class="text-3xl font-bold mb-6 text-center">Books Catalog</h1>
+
+  <div class="max-w-4xl mx-auto mb-6 flex gap-4">
+    <input
+      type="text"
+      id="itemFilter"
+      placeholder="Filter by item name"
+      class="flex-grow p-2 border rounded"
+    />
+    <input
+      type="number"
+      id="priceFilter"
+      placeholder="Max price"
+      class="w-32 p-2 border rounded"
+      min="0"
+    />
+    <button
+      id="filterBtn"
+      class="bg-blue-600 text-white px-4 rounded hover:bg-blue-700"
+    >
+      Filter
+    </button>
+  </div>
+
+  <div class="max-w-4xl mx-auto bg-white rounded shadow p-4">
+    <table class="min-w-full table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-blue-100">
+          <th class="border border-gray-300 p-2 text-left">ID</th>
+          <th class="border border-gray-300 p-2 text-left">Image</th>
+          <th class="border border-gray-300 p-2 text-left">Name</th>
+          <th class="border border-gray-300 p-2 text-left">Author</th>
+          <th class="border border-gray-300 p-2 text-left">Category</th>
+          <th class="border border-gray-300 p-2 text-left">Price ($)</th>
+        </tr>
+      </thead>
+      <tbody id="itemsTableBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const apiBaseUrl = 'http://localhost:8000/api';
+
+    const itemInput = document.getElementById('itemFilter');
+    const priceInput = document.getElementById('priceFilter');
+    const filterBtn = document.getElementById('filterBtn');
+    const tableBody = document.getElementById('itemsTableBody');
+
+    async function fetchItems() {
+      const item = itemInput.value.trim();
+      const price = priceInput.value.trim();
+
+      let query = [];
+      if (item) query.push(`item=${encodeURIComponent(item)}`);
+      if (price) query.push(`price=${encodeURIComponent(price)}`);
+
+      const queryString = query.length ? `?${query.join('&')}` : '';
+
+      try {
+        const response = await fetch(apiBaseUrl + queryString);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        displayItems(data);
+      } catch (error) {
+        console.error('Fetch error:', error);
+  tableBody.innerHTML = `<tr><td colspan="6" class="text-center text-red-500 p-4">Error loading data</td></tr>`;
+      }
+    }
+
+    function displayItems(items) {
+      if (!items.length) {
+        tableBody.innerHTML = `<tr><td colspan="6" class="text-center p-4">No items found</td></tr>`;
+        return;
+      }
+      tableBody.innerHTML = items
+        .map(
+          (item) => `
+          <tr class="border-t border-gray-200 hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">${item.id}</td>
+            <td class="border border-gray-300 p-2"><img src="${item.image}" alt="${item.name}" class="h-16 w-12 object-cover rounded shadow" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x80?text=No+Image';"></td>
+            <td class="border border-gray-300 p-2">${item.name}</td>
+            <td class="border border-gray-300 p-2">${item.author}</td>
+            <td class="border border-gray-300 p-2">${item.category}</td>
+            <td class="border border-gray-300 p-2">${item.price}</td>
+          </tr>
+        `
+        )
+        .join('');
+    }
+
+    filterBtn.addEventListener('click', fetchItems);
+
+    // Load all items on page load
+    fetchItems();
+  </script>
+</body>
+</html>

@@ -46,35 +46,32 @@ function renderUsers(users) {
   usersList.innerHTML = '';
   users.forEach(u => {
     const card = document.createElement('div');
-    card.className = 'border rounded p-3 flex gap-3 items-start';
+    card.className = 'border border-gray-700 rounded-xl p-4 bg-gray-800 shadow-md flex flex-col gap-2';
     card.innerHTML = `
-      <img src="${u.profile_pic_url || 'https://placehold.co/80x80?text=No+Img'}" class="w-20 h-20 object-cover rounded border" />
-      <div class="flex-1">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">${u.name || '(no name)'}</h3>
-          <span class="text-xs text-gray-500">#${u.user_id}</span>
-        </div>
-  <p class="text-sm text-gray-200"><strong>Email:</strong> ${u.email || '-'}</p>
-  <p class="text-sm text-gray-200"><strong>Reputation:</strong> ${u.reputation_score ?? 0}</p>
-
-        <details class="mt-2">
-          <summary class="text-sm text-blue-600 cursor-pointer">Edit</summary>
-          <form class="mt-2 space-y-2" data-user-id="${u.user_id}">
-            <input type="text" name="name" placeholder="Name" value="${u.name || ''}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
-            <input type="email" name="email" placeholder="Email" value="${u.email || ''}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
-            <input type="number" name="reputation_score" placeholder="Reputation" value="${u.reputation_score ?? 0}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
-            <div>
-              <label class="text-sm">New Profile Picture</label>
-              <input type="file" name="profilePic" accept="image/*" class="w-full text-sm" />
-            </div>
-            <div class="flex gap-2">
-              <button class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm rounded px-3 py-1 update-btn" type="submit">Save</button>
-              <button class="bg-red-600 hover:bg-red-700 text-white text-sm rounded px-3 py-1 delete-btn" data-id="${u.user_id}" type="button">Delete</button>
-            </div>
-            <p class="text-xs text-gray-600">You can also test with Postman/Thunder Client.</p>
-          </form>
-        </details>
+      <div class="flex flex-col items-center gap-2 relative">
+        <img src="${u.profile_pic_url || 'https://placehold.co/80x80?text=No+Img'}" class="w-20 h-20 object-cover rounded-lg border border-gray-700 bg-gray-900 mb-2" />
+        <h3 class="font-bold text-lg text-white text-center">${u.name || '(no name)'}</h3>
+        <div class="text-sm text-gray-300 text-center"><span class="font-semibold">Email:</span> ${u.email || '-'}</div>
+        <div class="text-sm text-gray-300 text-center"><span class="font-semibold">Reputation:</span> ${u.reputation_score ?? 0}</div>
+        <span class="absolute top-2 right-3 text-xs text-gray-400">#${u.user_id}</span>
       </div>
+      <details class="mt-2">
+        <summary class="text-sm text-blue-400 cursor-pointer">Edit</summary>
+        <form class="mt-2 space-y-2" data-user-id="${u.user_id}">
+          <input type="text" name="name" placeholder="Name" value="${u.name || ''}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
+          <input type="email" name="email" placeholder="Email" value="${u.email || ''}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
+          <input type="number" name="reputation_score" placeholder="Reputation" value="${u.reputation_score ?? 0}" class="w-full border border-gray-700 bg-gray-900 text-white placeholder-gray-400 rounded px-2 py-1 text-sm" />
+          <div>
+            <label class="text-sm">New Profile Picture</label>
+            <input type="file" name="profilePic" accept="image/*" class="w-full text-sm" />
+          </div>
+          <div class="flex gap-2">
+            <button class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm rounded px-3 py-1 update-btn" type="submit">Save</button>
+            <button class="bg-red-600 hover:bg-red-700 text-white text-sm rounded px-3 py-1 delete-btn" data-id="${u.user_id}" type="button">Delete</button>
+          </div>
+          <p class="text-xs text-gray-500">You can also test with Postman/Thunder Client.</p>
+        </form>
+      </details>
     `;
 
     const form = card.querySelector('form');

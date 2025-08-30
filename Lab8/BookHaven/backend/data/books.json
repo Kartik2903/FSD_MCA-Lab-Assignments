@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Pride and Prejudice",
+    "description": "A timeless romance novel by Jane Austen featuring Elizabeth Bennet and Mr. Darcy",
+    "price": 299,
+    "image": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 2,
+    "name": "To Kill a Mockingbird",
+    "description": "Harper Lee's powerful story of racial injustice and childhood innocence in Depression-era Alabama",
+    "price": 350,
+    "image": "https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 3,
+    "name": "The Great Gatsby",
+    "description": "F. Scott Fitzgerald's masterpiece about the American Dream and the Jazz Age",
+    "price": 275,
+    "image": "https://m.media-amazon.com/images/I/81QuEGw8VPL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 4,
+    "name": "1984",
+    "description": "George Orwell's dystopian classic about totalitarianism and surveillance state",
+    "price": 320,
+    "image": "https://m.media-amazon.com/images/I/819js3EQwbL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Harry Potter and the Philosopher's Stone",
+    "description": "J.K. Rowling's magical adventure that started the beloved Harry Potter series",
+    "price": 450,
+    "image": "https://m.media-amazon.com/images/I/81YOuOGFCJL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 6,
+    "name": "The Lord of the Rings",
+    "description": "J.R.R. Tolkien's epic fantasy trilogy about hobbits, wizards, and the fate of Middle-earth",
+    "price": 599,
+    "image": "https://m.media-amazon.com/images/I/91b0C2YNSrL._AC_UF1000,1000_QL80_.jpg"
+  }
+]

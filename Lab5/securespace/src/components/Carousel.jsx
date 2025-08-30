@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Carousel = ({ items, autoPlay = true, interval = 5000 }) => {
+const Carousel = ({ items, autoPlay = true, interval = 500 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-play functionality

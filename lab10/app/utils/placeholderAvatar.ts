@@ -1,0 +1,4 @@
+// This is just a base64 placeholder for an avatar. In a real app, you would use real images.
+const base64Image = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzM0NDk1RSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzYiIHI9IjIwIiBmaWxsPSIjN0Y4QzhEIi8+PHBhdGggZD0iTTI1LDc1IFF7NTAsOTAgNzUsNzV9IFFiZXppZXIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN0Y4QzhEIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=";
+
+export default base64Image;
