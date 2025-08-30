@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = ".netlify/output"
+  # optional: where Netlify will write any Functions; plugin will manage this
+  functions = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Optional: production environment overrides
+[context.production.environment]
+# For example, set NODE_VERSION if needed:
+# NODE_VERSION = "18"
